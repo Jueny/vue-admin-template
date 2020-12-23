@@ -3,6 +3,7 @@ import request from '@/utils/request'
 export function login(data) {
   return request({
     url: '/vue-admin-template/user/login',
+    // url: 'httpReq/testLogin',
     method: 'post',
     data
   })
@@ -11,6 +12,7 @@ export function login(data) {
 export function getInfo(token) {
   return request({
     url: '/vue-admin-template/user/info',
+    // url: 'httpReq/userinfo',
     method: 'get',
     params: { token }
   })

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import tableRouter from './modules/table'
 Vue.use(Router)
 
 /* Layout */
@@ -30,6 +30,7 @@ import Layout from '@/layout'
  * a base page that does not have permission requirements
  * all roles can be accessed
  */
+
 export const constantRoutes = [
   {
     path: '/login',
@@ -90,6 +91,42 @@ export const constantRoutes = [
     ]
   },
 
+  {
+    path: '/market',
+    component: Layout,
+    redirect: '/market/sys',
+    name: 'Market',
+    meta: { title: '市场', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'table1',
+        name: 'Table1',
+        component: () => import('@/views/market/sys/testtable'),
+        meta: { title: 'testtable测试', icon: 'table' }
+      },
+      {
+        path: 'list',
+        name: 'List',
+        component: () => import('@/views/market/sys/testList'),
+        meta: { title: 'testList测试页面', icon: 'table' }
+      },
+      // {
+      //   path: 'sys',
+      //   name: 'SYS',
+      //   component: () => import('@/views/market/sys/testList'),
+      //   meta: { title: '页面', icon: 'table' }
+      // },
+      {
+        path: 'common',
+        name: 'COMMON',
+        component: () => import('@/views/market/common/wantedWorkSheetList'),
+        meta: { title: 'COMMON', icon: 'tree' }
+      }
+    ]
+  },
+
+  tableRouter,
+  
   {
     path: '/nested',
     component: Layout,
@@ -179,3 +216,4 @@ export function resetRouter() {
 }
 
 export default router
+	
