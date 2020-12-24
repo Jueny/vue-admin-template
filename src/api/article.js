@@ -8,6 +8,12 @@ export function fetchList(query) {
   })
 }
 
+export function fetchBusiList() {
+  return request({
+    url: '/vue-admin-template/article/busilist',
+    method: 'get'
+  })
+}
 export function fetchArticle(id) {
   return request({
     url: '/vue-admin-template/article/detail',
