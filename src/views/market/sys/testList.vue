@@ -120,15 +120,14 @@
     methods: {
       fetchData() {
       this.listLoading = true
-      getList().then(response => {debugger 
+      getList().then(response => {
         this.dataList = response.data.items
         this.listLoading = false
       })
     },
       // 获取数据列表
       getDataList () {
-        console.log("!!!!!!!!!!!")
-        debugger
+        console.log("getDataList!!!!!!!!!!!")
         this.dataListLoading = true
         this.$http({
           url: this.$http.adornUrl('/sys/testList'),

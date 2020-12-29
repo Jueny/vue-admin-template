@@ -17,7 +17,7 @@ const data = Mock.mock({
     {
       url: '/vue-admin-template/market/sys/testList',
       type: 'get',
-      response: config => {debugger
+      response: config => {
         console.log("/vue-admin-template/market/sys/testList============="+data);
         const items = data.items
         return {
@@ -32,7 +32,6 @@ const data = Mock.mock({
   ]
   // 生成数据列表
 var dataList = []
-debugger
 for (let i = 0; i < Math.floor(Math.random() * 20 + 1); i++) {
   dataList.push(Mock.mock({
     id: '@id',
@@ -50,7 +49,7 @@ for (let i = 0; i < Math.floor(Math.random() * 20 + 1); i++) {
 
 // 获取参数列表
 // export function list () {
-  exports.list = function () {debugger
+  exports.list = function () {
   console.log("dataList===="+dataList)
   return {
     // isOpen: false,

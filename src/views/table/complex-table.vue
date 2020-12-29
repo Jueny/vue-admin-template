@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="filter-container">
       工单名称
-      <el-input v-model="listQuery.assign_name" placeholder="工单名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <el-input v-model="listQuery.assign_name" clearable placeholder="工单名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
       审批状态
       <el-select v-model="listQuery.status" clearable placeholder="审批状态"  style="width: 110px" class="filter-item">
         <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
@@ -18,13 +18,17 @@
       <span class="demonstration">业务类型</span>
       <el-cascader v-model="listQuery.busi_class" clearable :options="busi_class" :show-all-levels="false" @change="handleChange" @click="getBusiList"></el-cascader>
       申请单编号
-      <el-input v-model="listQuery.assign_id" placeholder="ASSIGN_ID" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <el-input v-model="listQuery.assign_id" clearable placeholder="申请单编号" style="width: 150px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      申请人
+      <el-input v-model="listQuery.creator" clearable placeholder="申请人" style="width: 100px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      工单所属部门
+      <el-input v-model="listQuery.depterment" clearable placeholder="工单所属部门" style="width: 150px;" class="filter-item" @keyup.enter.native="handleFilter" />
       
       <el-button  type="primary" icon="el-icon-search" @click="handleFilter">
         查询
       </el-button>
       <el-button  class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
-        Export
+        下载
       </el-button>
       <!-- <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">
         reviewer
@@ -174,7 +178,7 @@ const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
 }, {})
 
 export default {
-  name: 'ComplexTable',
+  name: 'wantedWorkSheet',
   components: { Pagination },
   // directives: { waves },
   filters: {
@@ -206,6 +210,8 @@ export default {
         status: undefined,
         busi_class: undefined,
         assign_id: undefined,
+        creator: undefined,
+        depterment: undefined,
         sort: '+id'
       },
       importanceOptions: [1, 2, 3],
@@ -291,7 +297,7 @@ busi_class : [],
         console.log(value);
       },
       getBusiList() {
-        console.log("getBusiList===");debugger
+        console.log("getBusiList===");
         fetchBusiList().then(response => {
         this.busi_class = response.data[0].busi_class
 

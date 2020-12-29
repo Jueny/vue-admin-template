@@ -96,8 +96,7 @@ export default {
   methods: {
   // 获取数据列表
       getDataList () {
-        console.log("!!!!!!!!!!!")
-        debugger
+        console.log("getDataList!!!!!!!!!!!")
         this.dataListLoading = true
         this.$http({
           url: this.$http.get('/sys/testList'),
